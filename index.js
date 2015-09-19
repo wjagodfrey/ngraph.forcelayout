@@ -295,7 +295,11 @@ function createLayout(graph, physicsSettings) {
    * @returns {Number} recommended mass of the body;
    */
   function nodeMass(nodeId) {
-    return 1 + graph.getLinks(nodeId).length / 3.0;
+    var links = graph.getLinks(nodeId);
+    if (links === null) {
+      return 1;
+    }
+    return 1 + links.length / 3.0;
   }
 }
 
